@@ -1,18 +1,15 @@
-FROM openjdk:17-jdk-slim
+# Stage 1: Build the application
+FROM eclipse-temurin:17-jdk-slim AS builder
 
 WORKDIR /app
-
-# Copy project files
 COPY . .
-
-# Make gradlew executable
 RUN chmod +x gradlew
-
-# Build the application
 RUN ./gradlew bootJar -x test
 
-# Optional: Copy the built JAR to a final stage
-FROM eclipse-temurin:17-jdk-slim
-COPY --from=0 /app/build/libs/*.jar app.jar
+# Stage 2: Run the application
+FROM eclipse-temurin:17-jre-slim
+
+WORKDIR /app
+COPY --from=builder /app/build/libs/*.jar app.jar
 
 ENTRYPOINT ["java", "-jar", "app.jar"]
