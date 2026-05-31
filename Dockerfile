@@ -12,7 +12,7 @@ RUN chmod +x gradlew
 RUN ./gradlew bootJar -x test
 
 # Optional: Copy the built JAR to a final stage
-FROM openjdk:17-jdk-slim
+FROM eclipse-temurin:17-jdk-slim
 COPY --from=0 /app/build/libs/*.jar app.jar
 
 ENTRYPOINT ["java", "-jar", "app.jar"]
