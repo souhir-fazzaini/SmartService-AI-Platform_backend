@@ -1,4 +1,4 @@
-package org.example.SmartService.service;
+package org.example.SmartService.services;
 
 import org.example.SmartService.entity.Review;
 import org.springframework.beans.factory.annotation.Value;

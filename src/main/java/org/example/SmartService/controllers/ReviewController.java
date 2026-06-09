@@ -6,7 +6,7 @@ import org.example.SmartService.services.ReviewService;
 import org.example.SmartService.dto.ReviewResponse;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import org.example.SmartService.service.AiService;
+import org.example.SmartService.services.AiService;
 
 import java.util.Date;
 import java.util.List;

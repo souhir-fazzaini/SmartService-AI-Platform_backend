@@ -1,0 +1,7 @@
+services:
+  - type: web
+    name: mon-app-springboot
+    env: java
+    buildCommand: ./gradlew build -x test
+    startCommand: java -jar build/libs/*.jar
+    plan: free
